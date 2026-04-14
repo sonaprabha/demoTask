@@ -1,0 +1,132 @@
+<!-- dashboard.component.html -->
+<div class="dashboard" [class.sidebar-collapsed]="isSidebarCollapsed">
+  <!-- Sidebar -->
+
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2 class="logo" *ngIf="!isSidebarCollapsed">Dashboard</h2>
+      <h2 class="logo collapsed" *ngIf="isSidebarCollapsed">📊</h2>
+      <button class="collapse-btn" (click)="toggleSidebar()">
+        {{ isSidebarCollapsed ? '→' : '←' }}
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li *ngFor="let item of menuItems; trackBy: trackByMenuItem">
+          <a [routerLink]="item.route" routerLinkActive="active" class="nav-link">
+            <span class="nav-icon">{{ item.icon }}</span>
+            <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ item.label }}</span>
+            <span class="badge" *ngIf="item.badge && !isSidebarCollapsed">{{ item.badge }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer" *ngIf="!isSidebarCollapsed">
+      <p>v1.0.0</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+   <app-alert [alertType]="'Success'" [alertMessage]="'This is a success message.'"></app-alert>
+   <app-spinner></app-spinner>
+  <main class="main">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <button class="menu-btn" (click)="toggleSidebar()">☰</button>
+        <h1 class="page-title">Dashboard</h1>
+      </div>
+
+      <div class="header-right">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search...">
+        </div>
+        
+        <div class="notifications">
+          <span class="notification-icon">🔔</span>
+          <span class="badge">3</span>
+        </div>
+
+        <div class="user-profile">
+          <img [src]="userAvatar" alt="User avatar" class="avatar">
+          <span class="user-name" *ngIf="!isSidebarCollapsed">{{ userName }}</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="content">
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card" *ngFor="let card of statsCards; trackBy: trackByStatCard">
+          <div class="stat-icon" [style.background-color]="card.color + '10'" [style.color]="card.color">
+            {{ card.icon }}
+          </div>
+          <div class="stat-details">
+            <h3 class="stat-title">{{ card.title }}</h3>
+            <p class="stat-value">{{ card.value }}</p>
+            <span class="stat-change" [class.positive]="card.change > 0" [class.negative]="card.change < 0">
+              {{ card.change > 0 ? '+' : '' }}{{ card.change }}%
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="charts-section">
+        <div class="chart-container">
+          <h3>Revenue Overview</h3>
+          <div class="chart-placeholder">
+            <canvas id="revenueChart" width="400" height="200"></canvas>
+            <p>📊 Chart will render here</p>
+          </div>
+        </div>
+        <div class="chart-container">
+          <h3>Sales by Category</h3>
+          <div class="chart-placeholder">
+            <canvas id="salesChart" width="400" height="200"></canvas>
+            <p>🥧 Chart will render here</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders Table -->
+      <div class="recent-orders">
+        <div class="section-header">
+          <h3>Recent Orders</h3>
+          <a href="#" class="view-all">View All →</a>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of recentOrders; trackBy: trackByOrder">
+                <td>{{ order.id }}</td>
+                <td>{{ order.customer }}</td>
+                <td>{{ order.product }}</td>
+                <td>{{ order.amount }}</td>
+                <td>
+                  <span class="status-badge" [ngClass]="order.status">
+                    {{ order.status }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,45 @@
+<p>order works!</p>
+
+
+
+<div class="container-fluid">
+            <app-votersdetails></app-votersdetails>
+           
+<div class="row">
+        <div class="col-12">
+          <input #filter />
+        <p #filter >p test</p>
+        <h1 #filter >test</h1>
+        <hr>
+                      
+        <hr>
+
+        <h2>Orders</h2>
+            <p>This is the Products orders page.</p>
+            <app-order-data [productList]="computerdetails">
+                <h1 header>My Title</h1> 
+                <input type="text" placeholder="Enter something..." data> 
+            </app-order-data>
+        </div>
+        
+    </div>
+</div> 
+
+<app-tabs>
+
+  <app-tab title="Voter Info">
+    Voter details content here
+    <app-votersdetails></app-votersdetails>
+  </app-tab>
+
+  <app-tab title="Voting History">
+    Voting history content here
+  </app-tab>
+
+   <app-tab title="userdata">
+    user details here
+  </app-tab>
+
+
+</app-tabs>
+

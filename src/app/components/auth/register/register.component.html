@@ -1,0 +1,64 @@
+<!-- login-form.component.html -->
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Please Register to your account</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          [class.is-invalid]="email?.invalid && email?.touched"
+        />
+        <div *ngIf="email?.invalid && email?.touched" class="error-messages">
+          <small *ngIf="email?.errors?.['required']">Email is required.</small>
+          <small *ngIf="email?.errors?.['email']">Please enter a valid email.</small>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+          [class.is-invalid]="password?.invalid && password?.touched"
+        />
+        <div *ngIf="password?.invalid && password?.touched" class="error-messages">
+          <small *ngIf="password?.errors?.['required']">Password is required.</small>
+          <small *ngIf="password?.errors?.['minlength']">
+            Password must be at least 6 characters.
+          </small>
+        </div>
+      </div>
+
+      <!-- Server Error -->
+       <div *ngIf="serverError" class="server-error">
+        {{ serverError }}
+      </div> 
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        [disabled]="registerForm.invalid || isLoading"
+        class="btn-login"
+      >
+        <span *ngIf="!isLoading">Sign In</span>
+        <span *ngIf="isLoading" class="spinner"></span>
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <a href="/login">Already have an account? Sign in</a>
+    </div>
+  </div>
+</div>
