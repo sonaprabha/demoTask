@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AlertComponent } from 'src/app/reusable/alert/alert.component';
 import { SpinnerComponent } from 'src/app/reusable/spinner/spinner.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { SpinnerComponent } from 'src/app/reusable/spinner/spinner.component';
     EmpDataComponent,
     AlertComponent,
         SpinnerComponent,
+        RxjsComponent,
 
   ],
   imports: [
@@ -38,7 +41,8 @@ import { SpinnerComponent } from 'src/app/reusable/spinner/spinner.component';
     DashboardRoutingModule,
     SharedModuleModule,
     ReactiveFormsModule,
-   MatFormFieldModule
+   MatFormFieldModule,
+    MatInputModule
     
   ],
 

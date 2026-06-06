@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrderComponent } from './order/order.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent},
   {path:'orders',component:OrderComponent},
   {path:'analytics',component:AnalyticsComponent},
+   {path:'rxjs',component:RxjsComponent},
 ];
 
 @NgModule({

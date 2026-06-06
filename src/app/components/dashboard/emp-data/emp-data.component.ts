@@ -103,6 +103,7 @@ addSkill() {
       skillName: [''],
       experience: ['']
     });
+   
 
     this.skills.push(skill);
     console.log(skill);
