@@ -3,18 +3,20 @@
     Enterprise Collection Software
   </h2>
   <div class="row g-4">
-    <div
-      class="col-lg-3 col-md-6"
-      *ngFor="let card of cards; let i = index">
-      <app-enterprise-cards
-        [title]="card.title"
-        [image]="card.image"
-        [points]="card.points"
-        [index]="i"
-        [isActive]="activeIndex === i"
-        [isMobile]="isMobile"
-        (activate)="setActive($event)"
-      ></app-enterprise-cards>
-    </div>
+    @for (card of cards; track card; let i = $index) {
+      <div
+        class="col-lg-3 col-md-6"
+        >
+        <app-enterprise-cards
+          [title]="card.title"
+          [image]="card.image"
+          [points]="card.points"
+          [index]="i"
+          [isActive]="activeIndex === i"
+          [isMobile]="isMobile"
+          (activate)="setActive($event)"
+        ></app-enterprise-cards>
+      </div>
+    }
   </div>
 </section>

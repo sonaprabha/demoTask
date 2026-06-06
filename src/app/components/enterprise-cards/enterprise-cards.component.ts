@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-enterprise-cards',
-  templateUrl: './enterprise-cards.component.html',
-  styleUrls: ['./enterprise-cards.component.css']
+    selector: 'app-enterprise-cards',
+    templateUrl: './enterprise-cards.component.html',
+    styleUrls: ['./enterprise-cards.component.css'],
+    standalone: true
 })
 export class EnterpriseCardsComponent  implements OnInit{
   @Input() title!: string;

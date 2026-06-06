@@ -5,8 +5,12 @@
 
   <aside class="sidebar">
     <div class="sidebar-header">
-      <h2 class="logo" *ngIf="!isSidebarCollapsed">Dashboard</h2>
-      <h2 class="logo collapsed" *ngIf="isSidebarCollapsed">📊</h2>
+      @if (!isSidebarCollapsed) {
+        <h2 class="logo">Dashboard</h2>
+      }
+      @if (isSidebarCollapsed) {
+        <h2 class="logo collapsed">📊</h2>
+      }
       <button class="collapse-btn" (click)="toggleSidebar()">
         {{ isSidebarCollapsed ? '→' : '←' }}
       </button>
@@ -14,25 +18,33 @@
 
     <nav class="sidebar-nav">
       <ul>
-        <li *ngFor="let item of menuItems; trackBy: trackByMenuItem">
-          <a [routerLink]="item.route" routerLinkActive="active" class="nav-link">
-            <span class="nav-icon">{{ item.icon }}</span>
-            <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ item.label }}</span>
-            <span class="badge" *ngIf="item.badge && !isSidebarCollapsed">{{ item.badge }}</span>
-          </a>
-        </li>
+        @for (item of menuItems; track trackByMenuItem($index, item)) {
+          <li>
+            <a [routerLink]="item.route" routerLinkActive="active" class="nav-link">
+              <span class="nav-icon">{{ item.icon }}</span>
+              @if (!isSidebarCollapsed) {
+                <span class="nav-label">{{ item.label }}</span>
+              }
+              @if (item.badge && !isSidebarCollapsed) {
+                <span class="badge">{{ item.badge }}</span>
+              }
+            </a>
+          </li>
+        }
       </ul>
     </nav>
 
-    <div class="sidebar-footer" *ngIf="!isSidebarCollapsed">
-      <p>v1.0.0</p>
-    </div>
+    @if (!isSidebarCollapsed) {
+      <div class="sidebar-footer">
+        <p>v1.0.0</p>
+      </div>
+    }
   </aside>
 
   <!-- Main Content -->
 
-   <app-alert [alertType]="'Success'" [alertMessage]="'This is a success message.'"></app-alert>
-   <app-spinner></app-spinner>
+  <app-alert [alertType]="'Success'" [alertMessage]="'This is a success message.'"></app-alert>
+  <app-spinner></app-spinner>
   <main class="main">
     <!-- Header -->
     <header class="header">
@@ -46,7 +58,7 @@
           <span class="search-icon">🔍</span>
           <input type="text" placeholder="Search...">
         </div>
-        
+
         <div class="notifications">
           <span class="notification-icon">🔔</span>
           <span class="badge">3</span>
@@ -54,7 +66,9 @@
 
         <div class="user-profile">
           <img [src]="userAvatar" alt="User avatar" class="avatar">
-          <span class="user-name" *ngIf="!isSidebarCollapsed">{{ userName }}</span>
+          @if (!isSidebarCollapsed) {
+            <span class="user-name">{{ userName }}</span>
+          }
         </div>
       </div>
     </header>
@@ -63,18 +77,20 @@
     <div class="content">
       <!-- Stats Cards -->
       <div class="stats-grid">
-        <div class="stat-card" *ngFor="let card of statsCards; trackBy: trackByStatCard">
-          <div class="stat-icon" [style.background-color]="card.color + '10'" [style.color]="card.color">
-            {{ card.icon }}
+        @for (card of statsCards; track trackByStatCard($index, card)) {
+          <div class="stat-card">
+            <div class="stat-icon" [style.background-color]="card.color + '10'" [style.color]="card.color">
+              {{ card.icon }}
+            </div>
+            <div class="stat-details">
+              <h3 class="stat-title">{{ card.title }}</h3>
+              <p class="stat-value">{{ card.value }}</p>
+              <span class="stat-change" [class.positive]="card.change > 0" [class.negative]="card.change < 0">
+                {{ card.change > 0 ? '+' : '' }}{{ card.change }}%
+              </span>
+            </div>
           </div>
-          <div class="stat-details">
-            <h3 class="stat-title">{{ card.title }}</h3>
-            <p class="stat-value">{{ card.value }}</p>
-            <span class="stat-change" [class.positive]="card.change > 0" [class.negative]="card.change < 0">
-              {{ card.change > 0 ? '+' : '' }}{{ card.change }}%
-            </span>
-          </div>
-        </div>
+        }
       </div>
 
       <!-- Charts Section -->
@@ -113,17 +129,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let order of recentOrders; trackBy: trackByOrder">
-                <td>{{ order.id }}</td>
-                <td>{{ order.customer }}</td>
-                <td>{{ order.product }}</td>
-                <td>{{ order.amount }}</td>
-                <td>
-                  <span class="status-badge" [ngClass]="order.status">
-                    {{ order.status }}
-                  </span>
-                </td>
-              </tr>
+              @for (order of recentOrders; track trackByOrder($index, order)) {
+                <tr>
+                  <td>{{ order.id }}</td>
+                  <td>{{ order.customer }}</td>
+                  <td>{{ order.product }}</td>
+                  <td>{{ order.amount }}</td>
+                  <td>
+                    <span class="status-badge" [ngClass]="order.status">
+                      {{ order.status }}
+                    </span>
+                  </td>
+                </tr>
+              }
             </tbody>
           </table>
         </div>

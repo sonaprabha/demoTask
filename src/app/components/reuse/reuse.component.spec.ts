@@ -8,8 +8,8 @@ describe('ReuseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReuseComponent ]
-    })
+    imports: [ReuseComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ReuseComponent);

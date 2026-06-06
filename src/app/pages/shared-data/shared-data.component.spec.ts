@@ -8,8 +8,8 @@ describe('SharedDataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedDataComponent ]
-    })
+    imports: [SharedDataComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(SharedDataComponent);

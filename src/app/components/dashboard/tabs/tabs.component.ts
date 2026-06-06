@@ -3,9 +3,10 @@ import { OrderDataComponent } from '../order-data/order-data.component';
 import { TabComponent } from '../tab/tab.component';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.css']
+    selector: 'app-tabs',
+    templateUrl: './tabs.component.html',
+    styleUrls: ['./tabs.component.css'],
+    standalone: true
 })
 export class TabsComponent implements AfterContentInit {
   constructor(){

@@ -11,7 +11,7 @@ import { VotersdetailsComponent } from './votersdetails/votersdetails.component'
 import { ConfirmmoduleComponent } from 'src/app/pages/confirmmodule/confirmmodule.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { share } from 'rxjs';
-import { SharedModuleModule } from 'src/app/shared-module/shared-module.module';
+
 import { EmpDataComponent } from './emp-data/emp-data.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -22,7 +22,12 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [
+    imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     DashboardComponent,
     OrderComponent,
     OrderDataComponent,
@@ -32,19 +37,8 @@ import { MatInputModule } from '@angular/material/input';
     AnalyticsComponent,
     EmpDataComponent,
     AlertComponent,
-        SpinnerComponent,
-        RxjsComponent,
-
-  ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    SharedModuleModule,
-    ReactiveFormsModule,
-   MatFormFieldModule,
-    MatInputModule
-    
-  ],
-
+    SpinnerComponent,
+    RxjsComponent
+],
 })
 export class DashboardModule { }

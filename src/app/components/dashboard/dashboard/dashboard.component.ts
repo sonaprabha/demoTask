@@ -2,7 +2,10 @@
 
 // dashboard.component.ts
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
+import { SpinnerComponent } from '../../../reusable/spinner/spinner.component';
+import { AlertComponent } from '../../../reusable/alert/alert.component';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 interface StatCard {
   title: string;
@@ -27,11 +30,13 @@ interface MenuItem {
   badge?: number;
 }
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush // ✅ Performance optimised
-
+    ,
+    standalone: true,
+    imports: [RouterLinkActive, RouterLink, AlertComponent, SpinnerComponent, NgClass]
 })
 
 

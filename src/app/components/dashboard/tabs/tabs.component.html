@@ -1,6 +1,8 @@
 <p>tabs works!</p>
-<button *ngFor="let tab of tabs" (click)="selectTab(tab)">
-      {{ tab.title }}
-    </button>
+@for (tab of tabs; track tab) {
+  <button (click)="selectTab(tab)">
+    {{ tab.title }}
+  </button>
+}
 
 <ng-content></ng-content>

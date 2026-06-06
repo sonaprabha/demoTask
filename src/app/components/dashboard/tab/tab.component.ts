@@ -2,9 +2,10 @@ import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, Input, Vi
 import { ConfirmmoduleComponent } from 'src/app/pages/confirmmodule/confirmmodule.component';
 
 @Component({
-  selector: 'app-tab',
-  templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.css'],
+    selector: 'app-tab',
+    templateUrl: './tab.component.html',
+    styleUrls: ['./tab.component.css'],
+    standalone: true,
 })
 export class TabComponent {
 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-rxjs',
-  templateUrl: './rxjs.component.html',
-  styleUrls: ['./rxjs.component.css']
+    selector: 'app-rxjs',
+    templateUrl: './rxjs.component.html',
+    styleUrls: ['./rxjs.component.css'],
+    standalone: true
 })
 export class RxjsComponent {
 

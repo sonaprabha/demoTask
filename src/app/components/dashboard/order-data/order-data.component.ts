@@ -4,10 +4,10 @@ import { VotersdetailsComponent } from '../votersdetails/votersdetails.component
 
 
 @Component({
-  selector: 'app-order-data',
-templateUrl: './order-data.component.html',
-  
-  styleUrls: ['./order-data.component.css']
+    selector: 'app-order-data',
+    templateUrl: './order-data.component.html',
+    styleUrls: ['./order-data.component.css'],
+    standalone: true
 })
 export class OrderDataComponent implements OnInit , OnChanges{
 

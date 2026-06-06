@@ -1,10 +1,13 @@
 import { Component, HostListener } from '@angular/core';
+import { EnterpriseCardsComponent } from '../../components/enterprise-cards/enterprise-cards.component';
 // import{img} from "../../assets/images/";
 
 @Component({
-  selector: 'app-shared-data',
-  templateUrl: './shared-data.component.html',
-  styleUrls: ['./shared-data.component.css']
+    selector: 'app-shared-data',
+    templateUrl: './shared-data.component.html',
+    styleUrls: ['./shared-data.component.css'],
+    standalone: true,
+    imports: [EnterpriseCardsComponent]
 })
 export class SharedDataComponent {
   activeIndex = 0;

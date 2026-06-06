@@ -1,6 +1,8 @@
 <p>tab works!</p>
-<div *ngIf="active" >
-      <ng-content></ng-content>
-</div>
+@if (active) {
+  <div >
+    <ng-content></ng-content>
+  </div>
+}
 
 <ng-template #modalHost></ng-template>

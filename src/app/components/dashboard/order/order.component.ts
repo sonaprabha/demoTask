@@ -1,11 +1,16 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { BehaviorSubject, debounceTime } from 'rxjs';
 import { VotersdetailsComponent } from '../votersdetails/votersdetails.component';
+import { TabComponent } from '../tab/tab.component';
+import { TabsComponent } from '../tabs/tabs.component';
+import { OrderDataComponent } from '../order-data/order-data.component';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+    selector: 'app-order',
+    templateUrl: './order.component.html',
+    styleUrls: ['./order.component.css'],
+    standalone: true,
+    imports: [VotersdetailsComponent, OrderDataComponent, TabsComponent, TabComponent]
 })
 export class OrderComponent implements OnInit ,OnChanges, AfterViewInit,OnDestroy{
   @ViewChild(VotersdetailsComponent) data!: VotersdetailsComponent;

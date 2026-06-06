@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-emp-data',
-  templateUrl: './emp-data.component.html',
-  styleUrls: ['./emp-data.component.css']
+    selector: 'app-emp-data',
+    templateUrl: './emp-data.component.html',
+    styleUrls: ['./emp-data.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule]
 })
 // employeeForm (FormGroup)
 // │

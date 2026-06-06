@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-votersdetails',
-  templateUrl: './votersdetails.component.html',
-  styleUrls: ['./votersdetails.component.css']
+    selector: 'app-votersdetails',
+    templateUrl: './votersdetails.component.html',
+    styleUrls: ['./votersdetails.component.css'],
+    standalone: true
 })
 export class VotersdetailsComponent implements OnInit{
 
